@@ -23,7 +23,11 @@ class ListCreditcardComponent extends Component {
     refreshList = () => {
         this.componentDidMount();
     }
+    formatCardNumber = (cardNumber) => {
+        return cardNumber.replace(/\d{4}(?!$)/g, '$& ');
+     }
     render() {
+        
         return (
             <div>
                 <div className="row">
@@ -46,7 +50,8 @@ class ListCreditcardComponent extends Component {
                                     cardList =>
                                         <tr key={cardList.id}>
                                             <td> {cardList.name} </td>
-                                            <td> {cardList.cardNumber}</td>
+                                                
+                                            <td> {this.formatCardNumber(cardList.cardNumber)}</td>
                                             <td> £{cardList.balance}</td>
                                             <td> £{cardList.limit}</td>
 
